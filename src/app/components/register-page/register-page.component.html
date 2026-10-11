@@ -1,0 +1,77 @@
+<div class="col-md-12">
+  <div class="card card-container" style="max-width: 400px; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 6px;">
+    <h2>Register</h2>
+
+    <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label for="UserName">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          name="UserName"
+          style="width: 100%; padding: 6px; box-sizing: border-box;"
+          [(ngModel)]="form.UserName"
+          required
+          #UserName="ngModel"
+        />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label for="Password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="Password"
+          style="width: 100%; padding: 6px; box-sizing: border-box;"
+          [(ngModel)]="form.Password"
+          required
+          #Password="ngModel"
+        />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label for="FirstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="FirstName"
+          style="width: 100%; padding: 6px; box-sizing: border-box;"
+          [(ngModel)]="form.FirstName"
+          required
+          #FirstName="ngModel"
+        />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label for="LastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="LastName"
+          style="width: 100%; padding: 6px; box-sizing: border-box;"
+          [(ngModel)]="form.LastName"
+          required
+          #LastName="ngModel"
+        />
+      </div>
+
+      <div class="form-group" style="margin-top: 15px;">
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 8px 16px; cursor: pointer;">
+          Sign Up
+        </button>
+      </div>
+
+      <div class="alert alert-danger" *ngIf="f.submitted && isSignUpFailed" style="color: red; margin-top: 10px;">
+        Signup failed: {{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful" style="color: green; margin-top: 10px;">
+      Registration successful! Redirecting to login...
+    </div>
+
+    <p *ngIf="!isSuccessful" style="margin-top: 15px;">
+      Already have an account? <a routerLink="/login">Login here</a>
+    </p>
+  </div>
+</div>
